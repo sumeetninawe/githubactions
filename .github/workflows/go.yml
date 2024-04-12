@@ -38,6 +38,6 @@ jobs:
         aws_region: "eu-central-1"
         bucket: ${{ secrets.TARGET_BUCKET }}
         name: simplemath
-        path: ./
+        path: ./simplemath
           
           
