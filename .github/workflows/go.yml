@@ -51,7 +51,7 @@ jobs:
       run: |
         echo "Binary Path: $BINARY_PATH"
         echo "S3 Bucket name: $S3_BUCKET_NAME"
-        aws s3 cp $BINARY_PATH s3://$S3_BUCKET_NAME/
+        aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
 
           
           
