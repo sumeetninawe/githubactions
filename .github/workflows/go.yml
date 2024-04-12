@@ -35,5 +35,18 @@ jobs:
       run: |
         aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
 
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: 18.156.77.48
+        username: ec2-user
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+          pwd
+          ls
+          scp -i /path/to/private/key ./simplemath ec2-user@${{ secrets.EC2_HOST }}:/app
+          ssh -i /path/to/private/key ec2-user@${{ secrets.EC2_HOST }} "chmod +x /app/simplemath && /app/simplemath"
+
+
           
           
