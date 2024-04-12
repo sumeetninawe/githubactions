@@ -49,6 +49,8 @@ jobs:
         AWS_DEFAULT_REGION: "eu-central-1"
         S3_BUCKET_NAME: ${{ secrets.TARGET_BUCKET }}
       run: |
+        echo "Binary Path: $BINARY_PATH"
+        echo "S3 Bucket name: $S3_BUCKET_NAME"
         aws s3 cp $BINARY_PATH s3://$S3_BUCKET_NAME/
 
           
