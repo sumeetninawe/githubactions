@@ -26,3 +26,12 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - name: Upload S3
+      uses: shallwefootball/upload-s3-action@v1.3.3
+      with:
+        aws_key_id: ${{ secrets.ACCESS_KEY }}
+        aws_secret_access_key: ${{ secrets.SECRET_KEY }}
+        aws_bucket: ${{ secrets.TARGET_BUCKET }}
+        source_dir: ./simplemath
+          
