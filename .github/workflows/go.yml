@@ -49,5 +49,5 @@ jobs:
         # scp from local to remote
         scp: ./simplemath => /home/ec2-user/app/simplemath
         # execute post-commands after scp
-        last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath
+        last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath &
           
