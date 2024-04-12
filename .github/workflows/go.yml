@@ -26,31 +26,13 @@ jobs:
 
     - name: Test
       run: go test -v ./...
-
-    # - name: S3 Upload Artifact
-    #   uses: blakjak44/s3-upload-artifact@v0.0.5
-    #   with:
-    #     aws_access_key_id: ${{ secrets.ACCESS_KEY }}
-    #     aws_secret_access_key: ${{ secrets.SECRET_KEY }}
-    #     aws_region: "eu-central-1"
-    #     bucket: ${{ secrets.TARGET_BUCKET }}
-    #     name: simplemath
-    #     path: ./simplemath
-
-    - name: Find Binary
-      run: |
-        BINARY_PATH=$(find . -name "simplemath" -type f)
-        echo "Binary Path: $BINARY_PATH"
     
     - name: Upload Binary to S3
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
         AWS_DEFAULT_REGION: "eu-central-1"
-        S3_BUCKET_NAME: ${{ secrets.TARGET_BUCKET }}
       run: |
-        echo "Binary Path: $BINARY_PATH"
-        echo "S3 Bucket name: $S3_BUCKET_NAME"
         aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
 
           
