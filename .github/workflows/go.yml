@@ -47,9 +47,9 @@ jobs:
         # content of ssh private key. ex raw content of ~/.ssh/id_rsa
         key: ${{ secrets.PRIVATE_KEY }}
         # scp from local to remote
-        scp: ./simplemath => /app/simplemath
+        scp: ./simplemath => /home/ec2-user/app/simplemath
         # execute post-commands after scp
-        last_ssh: ls /app/
+        last_ssh: ls /home/ec2-user/app/
           
 
     - name: Deploy to EC2
