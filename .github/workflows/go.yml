@@ -44,8 +44,8 @@ jobs:
         script: |
           pwd
           ls
-          scp -i /path/to/private/key ./simplemath ec2-user@${{ secrets.EC2_HOST }}:/app
-          ssh -i /path/to/private/key ec2-user@${{ secrets.EC2_HOST }} "chmod +x /app/simplemath && /app/simplemath"
+          scp -i ${{ secrets.PRIVATE_KEY }} ./simplemath ec2-user@${{ secrets.EC2_HOST }}:/app
+          ssh -i ${{ secrets.PRIVATE_KEY }} ec2-user@${{ secrets.EC2_HOST }} "chmod +x /app/simplemath && /app/simplemath"
 
 
           
