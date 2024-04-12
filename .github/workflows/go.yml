@@ -30,11 +30,14 @@ jobs:
     - name: FileNamesAndPath
       run: pwd & ls
 
-    - name: Upload S3
-      uses: shallwefootball/upload-s3-action@v1.3.3
+    - name: S3 Upload Artifact
+      uses: blakjak44/s3-upload-artifact@v0.0.5
       with:
-        aws_key_id: ${{ secrets.ACCESS_KEY }}
+        aws_access_key_id: ${{ secrets.ACCESS_KEY }}
         aws_secret_access_key: ${{ secrets.SECRET_KEY }}
-        aws_bucket: ${{ secrets.TARGET_BUCKET }}
-        source_dir: ./simplemath
+        aws_region: "eu-central-1"
+        bucket: ${{ secrets.TARGET_BUCKET }}
+        name: simplemath
+        path: ./
+          
           
