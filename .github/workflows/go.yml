@@ -27,6 +27,9 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+    - name: FileNamesAndPath
+      run: pwd & ls
+
     - name: Upload S3
       uses: shallwefootball/upload-s3-action@v1.3.3
       with:
