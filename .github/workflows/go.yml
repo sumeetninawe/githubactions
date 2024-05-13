@@ -46,10 +46,10 @@ jobs:
         aws_region: "eu-central-1"
         bucket: ${{ secrets.TARGET_BUCKET }}
         name: "simplemath"
-        path: "./"
+        path: "/artifacts/"
 
     - name: Check files
-      run: ls ./ && pwd ./
+      run: ls /artifacts && pwd ./
 
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
@@ -57,6 +57,6 @@ jobs:
         host: 3.122.194.120
         user: ec2-user
         key: ${{ secrets.PRIVATE_KEY }}
-        scp: ./simplemath => /home/ec2-user/app/simplemath
-        last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath &
+        scp: /artifacts/simplemath => /home/ec2-user/app/simplemath
+        last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath
           
