@@ -38,8 +38,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - name: Create directory
-      run: sudo mkdir /artifacts/
+    
       
     - name: S3 Download Artifact
       uses: blakjak44/s3-download-artifact@v0.0.5
@@ -49,10 +48,10 @@ jobs:
         aws_region: "eu-central-1"
         bucket: ${{ secrets.TARGET_BUCKET }}
         name: "simplemath"
-        path: "/artifacts/"
+        path: ./
 
     - name: Check files
-      run: ls /artifacts/
+      run: ls ./
 
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
