@@ -10,7 +10,6 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -36,6 +35,7 @@ jobs:
         aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: S3 Download Artifact
