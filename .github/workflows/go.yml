@@ -35,6 +35,9 @@ jobs:
       run: |
         aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
     - name: S3 Download Artifact
       uses: blakjak44/s3-download-artifact@v0.0.5
       with:
@@ -49,18 +52,11 @@ jobs:
       run: ls && pwd          
 
     - name: ssh-scp-ssh-pipelines
-      # You may pin to the exact commit or the version.
-      # uses: cross-the-world/ssh-scp-ssh-pipelines@78e864b4890087a58248ff39320406971ca88b89
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
       with:
-        # ssh remote host
-        host: 18.156.77.48
-        # ssh remote user
+        host: 3.122.194.120
         user: ec2-user
-        # content of ssh private key. ex raw content of ~/.ssh/id_rsa
         key: ${{ secrets.PRIVATE_KEY }}
-        # scp from local to remote
         scp: ./simplemath => /home/ec2-user/app/simplemath
-        # execute post-commands after scp
         last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath &
           
