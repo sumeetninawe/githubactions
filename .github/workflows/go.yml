@@ -41,7 +41,7 @@ jobs:
         aws_access_key_id: ${{ secrets.ACCESS_KEY }}
         aws_secret_access_key: ${{ secrets.SECRET_KEY }}
         aws_region: "eu-central-1"
-        bucket: s3://${{ secrets.TARGET_BUCKET }}/
+        bucket: ${{ secrets.TARGET_BUCKET }}
         name: "simplemath"
         path: "./"
 
