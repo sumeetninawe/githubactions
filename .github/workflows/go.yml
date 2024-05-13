@@ -59,6 +59,6 @@ jobs:
         host: 3.122.194.120
         user: ec2-user
         key: ${{ secrets.PRIVATE_KEY }}
-        scp: /artifacts/simplemath => /home/ec2-user/app/simplemath
+        scp: /home/runner/work/githubactions/githubactions/simplemath => /home/ec2-user/app/simplemath
         last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath
           
