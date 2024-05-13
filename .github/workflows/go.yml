@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Create directory
-      run: mkdir /artifacts/
+      run: sudo mkdir /artifacts/
       
     - name: S3 Download Artifact
       uses: blakjak44/s3-download-artifact@v0.0.5
