@@ -38,6 +38,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - name: Create directory
+      run: mkdir /artifacts/
+      
     - name: S3 Download Artifact
       uses: blakjak44/s3-download-artifact@v0.0.5
       with:
@@ -46,10 +49,10 @@ jobs:
         aws_region: "eu-central-1"
         bucket: ${{ secrets.TARGET_BUCKET }}
         name: "simplemath"
-        path: "./"
+        path: "/artifacts/"
 
     - name: Check files
-      run: ls
+      run: ls /artifacts/
 
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
@@ -57,6 +60,6 @@ jobs:
         host: 3.122.194.120
         user: ec2-user
         key: ${{ secrets.PRIVATE_KEY }}
-        scp: /home/runner/work/githubactions/githubactions/simplemath => /home/ec2-user/app/simplemath
+        scp: /artifacts/simplemath => /home/ec2-user/app/simplemath
         last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath
           
