@@ -49,7 +49,7 @@ jobs:
         path: "./"
 
     - name: Check files
-      run: ls && pwd          
+      run: ls ./ && pwd ./
 
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
