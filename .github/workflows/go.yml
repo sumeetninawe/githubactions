@@ -74,7 +74,7 @@ jobs:
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
       with:
-        host: 3.122.194.120
+        host: 3.70.96.177
         user: ec2-user
         key: ${{ secrets.PRIVATE_KEY }}
         scp: /artifacts/simplemath => /home/ec2-user/app/simplemath
