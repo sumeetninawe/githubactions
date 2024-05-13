@@ -46,10 +46,12 @@ jobs:
         aws_region: "eu-central-1"
         bucket: ${{ secrets.TARGET_BUCKET }}
         name: "simplemath"
-        path: "/artifacts/"
+        path: "./"
 
     - name: Check files
-      run: ls /artifacts && pwd ./
+      run: |
+        ls ./
+        pwd ./
 
     - name: ssh-scp-ssh-pipelines
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
