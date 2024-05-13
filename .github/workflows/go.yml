@@ -78,5 +78,5 @@ jobs:
         user: ec2-user
         key: ${{ secrets.PRIVATE_KEY }}
         scp: ./simplemath => /home/ec2-user/app/simplemath
-        last_ssh: chmod +x /home/ec2-user/app/simplemath && /home/ec2-user/app/simplemath/simplemath
+        last_ssh: chmod +x /home/ec2-user/app/simplemath/simplemath
           
